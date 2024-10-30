@@ -5,10 +5,9 @@ export type HeaderProps = {
   classname?: string;
 };
 
-
-export type UserType = 'creator' | 'editor' | 'viewer' ; 
+export type UserType = "creator" | "editor" | "viewer";
 
 export type CreateDocumentParams = {
-  userId: string | string[]
-  email: string
-}
+  userId: string | string[];
+  email: string;
+};
