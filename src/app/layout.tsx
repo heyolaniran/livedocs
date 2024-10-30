@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Provider } from "./Provider";
 
 const Satoshi = localFont({
   src: "./fonts/SatoshiBold.woff",
@@ -28,7 +29,9 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <body className={`min-h-screen ${Satoshi.variable}`}>{children}</body>
+        <body className={`min-h-screen ${Satoshi.variable}`}>
+          <Provider>{children}</Provider>
+        </body>
       </html>
     </ClerkProvider>
   );

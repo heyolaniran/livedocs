@@ -9,6 +9,8 @@ import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
+import { LiveblocksPlugin, liveblocksConfig } from "@liveblocks/react-lexical";
+import { Threads } from "./Thread";
 import React from "react";
 
 // Catch any errors that occur during Lexical updates and log them
@@ -24,7 +26,7 @@ function Placeholder() {
 }
 
 export function Editor() {
-  const initialConfig = {
+  const initialConfig = liveblocksConfig({
     namespace: "Editor",
     nodes: [HeadingNode],
     onError: (error: Error) => {
@@ -32,7 +34,7 @@ export function Editor() {
       throw error;
     },
     theme: Theme,
-  };
+  });
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
@@ -47,6 +49,11 @@ export function Editor() {
             placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
           />
+
+          <LiveblocksPlugin>
+            <Threads />
+          </LiveblocksPlugin>
+
           <HistoryPlugin />
           <AutoFocusPlugin />
         </div>
