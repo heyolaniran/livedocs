@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 
 export type HeaderProps = {
-    children:  React.ReactNode
-    classname?: string
-}
+  children: React.ReactNode;
+  classname?: string;
+};
