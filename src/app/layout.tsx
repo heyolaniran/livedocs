@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 const Satoshi = localFont({
   src: "./fonts/SatoshiBold.woff",
@@ -20,12 +22,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`min-h-screen ${Satoshi.variable}`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider appearance={{
+      baseTheme : dark, 
+      variables : { colorPrimary: "#3371FF", 
+        fontSize : '16px'
+      }, 
+    }}>
+      <html lang="en">
+        <body
+          className={`min-h-screen ${Satoshi.variable}`}
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
